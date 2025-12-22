@@ -5,7 +5,7 @@ public class Main {
         Parser parser = new Parser();
         Settings settings = parser.parse(args);
         if (settings != null) {
-            
+            new FileContentFilter(settings).filter();
         }
     }
 }

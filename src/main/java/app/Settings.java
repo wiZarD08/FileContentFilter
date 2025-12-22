@@ -8,7 +8,7 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 public class Settings {
-    private boolean addMode;
+    private boolean appendMode;
     private boolean shortStats;
     private boolean fullStats;
     private String outputPath;

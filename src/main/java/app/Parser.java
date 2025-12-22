@@ -9,7 +9,7 @@ public class Parser {
     private final CommandLineParser commandLineParser = new DefaultParser();
 
     public Parser() {
-        options.addOption("a", false, "Add mode for output");
+        options.addOption("a", false, "Append mode for output");
         options.addOption("s", false, "Enable short statistics");
         options.addOption("f", false, "Enable full statistics");
 
