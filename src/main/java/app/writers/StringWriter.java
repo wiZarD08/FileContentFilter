@@ -24,14 +24,8 @@ public class StringWriter extends DataWriter {
         }
     }
 
-    public void printStats() {
-        if (settings.isShortStats() || settings.isFullStats()) {
-            System.out.println("Файл: " + getFilePath());
-            System.out.println("Количество записанных элементов: " + count);
-            if (settings.isFullStats() && count > 0) {
-                System.out.println("Размер самой короткой строки: " + minLength);
-                System.out.println("Размер самой длинной строки: " + maxLength);
-            }
-        }
+    public void printFullStats() {
+        System.out.println("Размер самой короткой строки: " + minLength);
+        System.out.println("Размер самой длинной строки: " + maxLength);
     }
 }

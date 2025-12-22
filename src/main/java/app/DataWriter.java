@@ -3,20 +3,18 @@ package app;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public abstract class DataWriter {
     protected final Settings settings;
-    protected final String fileName;
+    protected final String filePath;
     protected PrintWriter printWriter;
     protected long count;
     private boolean error;
 
     protected DataWriter(Settings settings, String fileName) {
         this.settings = settings;
-        this.fileName = fileName;
-    }
-
-    public String getFilePath() {
         StringBuilder builder = new StringBuilder();
         String path = settings.getOutputPath();
         if (path != null) {
@@ -27,12 +25,12 @@ public abstract class DataWriter {
         if (settings.getFilePrefix() != null)
             builder.append(settings.getFilePrefix());
         builder.append(fileName);
-        return builder.toString();
+        this.filePath = builder.toString();
     }
 
-    protected boolean createPrintWriter() {
+    public boolean createPrintWriter() {
         if (printWriter == null) {
-            String path = getFilePath();
+            String path = filePath;
             try {
                 printWriter = new PrintWriter(new FileWriter(path, settings.isAppendMode()));
             } catch (IOException e) {
@@ -45,6 +43,28 @@ public abstract class DataWriter {
             }
         }
         return true;
+    }
+
+    public void printStats() {
+        if (printWriter != null && (settings.isShortStats() || settings.isFullStats())) {
+            System.out.println("Файл: " + filePath);
+            System.out.println("Количество записанных элементов: " + count);
+            if (settings.isFullStats() && count > 0) {
+                printFullStats();
+            }
+            System.out.println();
+        }
+    }
+
+    public abstract void printFullStats();
+
+    public void clearFileIfExists() {
+        if (Files.exists(Path.of(filePath))) {
+            try (FileWriter writer = new FileWriter(filePath)) {
+                writer.write("");
+            } catch (IOException ignored) {
+            }
+        }
     }
 
     public void close() {

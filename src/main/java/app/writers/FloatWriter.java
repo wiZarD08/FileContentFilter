@@ -16,9 +16,9 @@ public class FloatWriter extends DataWriter {
         super(settings, FILE_NAME);
     }
 
-    public void write(double number) {
+    public void write(double number, String line) {
         if (super.createPrintWriter()) {
-            printWriter.println(number);
+            printWriter.println(line);
             count++;
             if (settings.isFullStats()) {
                 if (number < min) min = number;
@@ -28,17 +28,10 @@ public class FloatWriter extends DataWriter {
         }
     }
 
-    public void printStats() {
-        if (settings.isShortStats() || settings.isFullStats()) {
-            System.out.println("Файл: " + getFilePath());
-            System.out.println("Количество записанных элементов: " + count);
-            if (settings.isFullStats() && count > 0) {
-                System.out.println("Минимальное значение: " + min);
-                System.out.println("Максимальное значение: " + max);
-                System.out.println("Сумма: " + sum.toString());
-                System.out.println("Среднее значение: " + sum.divide(BigDecimal.valueOf(count), RoundingMode.HALF_UP));
-            }
-            System.out.println();
-        }
+    public void printFullStats() {
+        System.out.println("Минимальное значение: " + min);
+        System.out.println("Максимальное значение: " + max);
+        System.out.println("Сумма: " + sum.toString());
+        System.out.println("Среднее значение: " + sum.divide(BigDecimal.valueOf(count), RoundingMode.HALF_UP));
     }
 }

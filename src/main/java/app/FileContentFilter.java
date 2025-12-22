@@ -6,6 +6,8 @@ import app.writers.StringWriter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class FileContentFilter {
@@ -27,10 +29,10 @@ public class FileContentFilter {
                 while (scanner.hasNextLine()) {
                     String line = scanner.nextLine();
                     try {
-                        intWriter.write(Long.parseLong(line.trim()));
+                        intWriter.write(Long.parseLong(line.trim()), line);
                     } catch (NumberFormatException ignore) {
                         try {
-                            floatWriter.write(Double.parseDouble(line.trim()));
+                            floatWriter.write(Double.parseDouble(line.trim()), line);
                         } catch (NumberFormatException ignore1) {
                             stringWriter.write(line);
                         }
@@ -40,15 +42,11 @@ public class FileContentFilter {
                 System.out.println(ex.getMessage());
             }
         }
-        closeWriters();
-        intWriter.printStats();
-        floatWriter.printStats();
-        stringWriter.printStats();
-    }
-
-    private void closeWriters() {
-        intWriter.close();
-        floatWriter.close();
-        stringWriter.close();
+        List<DataWriter> writers = new ArrayList<>(List.of(intWriter, floatWriter, stringWriter));
+        if (!settings.isAppendMode()) {
+            writers.forEach(DataWriter::clearFileIfExists);
+        }
+        writers.forEach(DataWriter::printStats);
+        writers.forEach(DataWriter::close);
     }
 }
