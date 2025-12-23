@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4c6ac4c-4a4a-4ae1-8bd6-4aa59a5ab206" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/DataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/DataWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/FileContentFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/FileContentFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/writers/FloatWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/writers/FloatWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/writers/StringWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/writers/StringWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
