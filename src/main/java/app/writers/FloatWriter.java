@@ -9,7 +9,7 @@ import java.math.RoundingMode;
 public class FloatWriter extends DataWriter {
     private static final String FILE_NAME = "floats.txt";
     private double min = Double.MAX_VALUE;
-    private double max = Double.MIN_VALUE;
+    private double max = -Double.MAX_VALUE;
     private BigDecimal sum = BigDecimal.valueOf(0);
 
     public FloatWriter(Settings settings) {

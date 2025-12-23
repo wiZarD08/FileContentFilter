@@ -15,6 +15,10 @@ public abstract class DataWriter {
 
     protected DataWriter(Settings settings, String fileName) {
         this.settings = settings;
+        this.filePath = buildFilePath(fileName, settings);
+    }
+
+    private String buildFilePath(String fileName, Settings settings) {
         StringBuilder builder = new StringBuilder();
         String path = settings.getOutputPath();
         if (path != null) {
@@ -25,17 +29,16 @@ public abstract class DataWriter {
         if (settings.getFilePrefix() != null)
             builder.append(settings.getFilePrefix());
         builder.append(fileName);
-        this.filePath = builder.toString();
+        return builder.toString();
     }
 
     public boolean createPrintWriter() {
         if (printWriter == null) {
-            String path = filePath;
             try {
-                printWriter = new PrintWriter(new FileWriter(path, settings.isAppendMode()));
+                printWriter = new PrintWriter(new FileWriter(filePath, settings.isAppendMode()));
             } catch (IOException e) {
                 if (!error) {
-                    System.out.println("Ошибка при создании файла " + path);
+                    System.out.println("Ошибка при создании файла " + filePath);
                     System.out.println(e.getClass().getName() + " : " + e.getMessage());
                     error = true;
                 }

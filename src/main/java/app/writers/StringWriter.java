@@ -5,8 +5,8 @@ import app.Settings;
 
 public class StringWriter extends DataWriter {
     private static final String FILE_NAME = "strings.txt";
-    private long minLength = Long.MAX_VALUE;
-    private long maxLength = Long.MIN_VALUE;
+    private int minLength = Integer.MAX_VALUE;
+    private int maxLength = Integer.MIN_VALUE;
 
     public StringWriter(Settings settings) {
         super(settings, FILE_NAME);

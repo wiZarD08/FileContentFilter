@@ -39,9 +39,12 @@ public class FileContentFilter {
                     }
                 }
             } catch (FileNotFoundException ex) {
-                System.out.println(ex.getMessage());
+                System.out.println("Файл '" + inputFileName + "' не найден");
             }
         }
+    }
+
+    public void printStatsAndClose() {
         List<DataWriter> writers = new ArrayList<>(List.of(intWriter, floatWriter, stringWriter));
         if (!settings.isAppendMode()) {
             writers.forEach(DataWriter::clearFileIfExists);
